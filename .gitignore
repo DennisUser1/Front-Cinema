@@ -20,9 +20,24 @@
 # production
 /build
 
+# assembly artifacts and temporary files
+/dist
+/.cache
+*.log
+*.lock
+*.bak
+*.swp
+*.tmp
+
 # misc
 .DS_Store
 *.pem
+
+# IDEs and code editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
 
 # debug
 npm-debug.log*
@@ -39,3 +54,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# log files and cache
+/.eslintcache
+/.stylelintcache
+/.turbo
+/.parcel-cache
