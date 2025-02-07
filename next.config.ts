@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   // reactStrictMode: true,
   poweredByHeader: false,
-  optimizeFonts: false,
+  // optimizeFonts: false,
   env: {
     APP_URL: process.env.REACT_APP_URL,
     APP_ENV: process.env.REACT_APP_ENV,
@@ -26,4 +26,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default nextConfig; 
