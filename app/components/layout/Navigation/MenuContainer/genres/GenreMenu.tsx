@@ -15,7 +15,7 @@ const GenreMenu: FC = () => {
 		</div>
 	) : (
 		<Menu menu={{ title: 'Popular genres', items: data || [] }} />
-	); /* Type {} is missing the following properties from type IMenuIte[]: length, pop, push, concat and 35 more */
+	); 
 };
 
 export default GenreMenu;

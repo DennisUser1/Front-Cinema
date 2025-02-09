@@ -1,17 +1,28 @@
-import { GenreService } from "@/services/genre.service";
-import { useQuery } from "@tanstack/react-query";
-import { IMenuItem } from "../menu.interface";
-import { getGenreUrl } from "@/config/url.config";
+import { useQuery } from '@tanstack/react-query';
+import { AxiosResponse } from 'axios';
+
+import { IGenre } from '@/shared/types/movie.types';
+
+import { GenreService } from '@/services/genre.service';
+
+import { getGenreUrl } from '@/config/url.config';
+
+import { IMenuItem } from '../menu.interface';
 
 export const usePopularGenres = () => {
-    const queryData = useQuery('popular genre menu', () => GenreService.getPopularGenres(), {
-select: ({data}) => data.map(genre => ({
-    icon: genre.icon,
-    link: getGenreUrl(genre.slug),
-    title: genre.name
-} as IMenuItem)).splice(0, 4);
+	const queryData = useQuery<AxiosResponse<IGenre[]>, unknown, IMenuItem[]>({
+		queryKey: ['popular genre menu'],
+		queryFn: async () => {
+			return await GenreService.getAll();
+		},
+		select: (response: AxiosResponse<IGenre[]>) => {
+			return response.data.splice(0, 4).map((genre) => ({
+				icon: genre.icon,
+				link: getGenreUrl(genre.slug),
+				title: genre.name,
+			}));
+		},
+	});
 
-
-    })
-    return queryData;
-}; /* Expected 1-2 arguments, but got 3    Binding element data implicitly has an any type*/
+	return queryData;
+};
